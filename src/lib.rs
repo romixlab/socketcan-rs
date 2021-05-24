@@ -545,16 +545,6 @@ impl CANFrame {
             return Err(ConstructionError::TooMuchData);
         }
 
-        if id > EFF_MASK {
-            return Err(ConstructionError::IDTooLarge);
-        }
-
-        // set EFF_FLAG on large message
-        if id > SFF_MASK {
-            _id |= EFF_FLAG;
-        }
-
-
         if rtr {
             _id |= RTR_FLAG;
         }
